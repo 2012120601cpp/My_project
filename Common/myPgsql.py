@@ -5,13 +5,18 @@ class MyPgsql(object):
         self.conn = psycopg2.connect(host="",user="",password="",port="",database="")
         self.cursor =self.conn.cursor()
 
-    def ask_question(self):
-        sql = "select * from mdm.codesystem where question = '故障查询'"
-        self.cursor.excute(sql)
 
     def __del__(self):
         self.cursor.close()
         self.conn.close()
+
+    def excute_sql(self,sql):
+        self.cursor.excute(sql)
+
+    def ask_question(self):
+        sql = ""
+        self.excute_sql(sql)
+
 
     def run(self):
         while True:
