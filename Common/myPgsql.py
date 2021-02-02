@@ -1,15 +1,14 @@
 import psycopg2
 import logging
+from Common import myLogger
 
 class MyPgsql(object):
     # 连接数据库
     def __init__(self):
         try:
             self.conn = psycopg2.connect(host="172.16.129.79",user="postgres",password="postgres",port="5432",database="empi_2")
-            print("数据库连接成功！")
             logging.info("数据库连接成功！")
         except Exception as e:
-            print("数据库连接失败")
             logging.info("数据库连接失败：%s",e)
             raise e
         # 使用cursor()方法获取操作游标
@@ -21,7 +20,6 @@ class MyPgsql(object):
     def excute_sql(self,sql):
         try:
             self.cursor.execute(sql)
-            print("执行成功")
             logging.info("sql查询成功！")
             # print(self.cursor.fetchall())
             return self.cursor.fetchall()
