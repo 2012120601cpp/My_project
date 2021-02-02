@@ -38,7 +38,7 @@ class MyPgsql(object):
         logging.info("关闭数据库成功！")
 
 def main():
-    sql = "select * from  patient where id='26882' limit 1;"
+    sql = "select euid from  patient where id='26882' limit 1;"
     mypgsql =MyPgsql()
     mypgsql.excute_sql(sql)
 
