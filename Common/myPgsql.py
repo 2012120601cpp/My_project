@@ -1,34 +1,48 @@
 import psycopg2
+import logging
 
 class MyPgsql(object):
+    # 连接数据库
     def __init__(self):
-        self.conn = psycopg2.connect(host="",user="",password="",port="",database="")
-        self.cursor =self.conn.cursor()
+        try:
+            self.conn = psycopg2.connect(host="172.16.129.79",user="postgres",password="postgres",port="5432",database="empi_2")
+            print("数据库连接成功！")
+            logging.info("数据库连接成功！")
+        except Exception as e:
+            print("数据库连接失败")
+            logging.info("数据库连接失败：%s",e)
+            raise e
+        # 使用cursor()方法获取操作游标
+        self.cursor = self.conn.cursor()
 
 
-    def __del__(self):
-        self.cursor.close()
-        self.conn.close()
 
+    # sql执行
     def excute_sql(self,sql):
-        self.cursor.excute(sql)
-
-    def ask_question(self):
-        sql = ""
-        self.excute_sql(sql)
-
-
-    def run(self):
-        while True:
-            num = input("请输入你想要查询的问题：")
-            if num ==  "3":
-                pass
+        try:
+            self.cursor.execute(sql)
+            print("执行成功")
+            logging.info("sql查询成功！")
+            # print(self.cursor.fetchall())
+            return self.cursor.fetchall()
+        except:
+            self.conn.rollback()
 
 
+    # 关闭数据库
+    def close_pgsql(self):
+        # 关闭游标
+        self.cursor.close()
+        # 关闭数据库
+        self.conn.close()
+        logging.info("关闭数据库成功！")
 
-def main(self):
+def main():
+    sql = "select * from  patient where id='26882' limit 1;"
     mypgsql =MyPgsql()
-    mypgsql.run()
+    mypgsql.excute_sql(sql)
+
+
 
 
 
