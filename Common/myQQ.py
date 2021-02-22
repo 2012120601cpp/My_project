@@ -6,14 +6,13 @@ from email.header import Header
 class Mail:
     def __init__(self):
         # 第三方 SMTP 服务
-
-        self.mail_host = "smtp.qq.com"  # 设置服务器:这个是qq邮箱服务器，直接复制就可以
-        self.mail_pass = "xuiattgdleykcach"  # 刚才我们获取的授权码
-        self.sender = '379609962@qq.com'  # 你的邮箱地址
+        self.mail_host = "smtp.qq.com"  # 设置服务器
+        self.mail_pass = "xuiattgdleykcach"  # 获取的授权码
+        self.sender = '379609962@qq.com'  # 发件人的邮箱地址
         self.receivers = ['cai.panpan@synyi.com','1275372931@qq.com']  # 收件人的邮箱地址，可设置多个
 
     def send(self):
-
+        # 发送的内容
         content = 'Dear all:\n' \
                   '今日变量中心  V1.4.0.0930  整体进度：进行中【计划  9月30日  发版】\n' \
                   '项目计划如下：\n' \
@@ -30,7 +29,7 @@ class Mail:
         message['From'] = Header("日报助手", 'utf-8')
         message['To'] = Header("变量中心项目相关人员", 'utf-8')
 
-        subject = '测试日报'  # 发送的主题，可自由填写
+        subject = '测试日报'  # 发送的主题
         message['Subject'] = Header(subject, 'utf-8')
         try:
             smtpObj = smtplib.SMTP_SSL(self.mail_host, 465)
