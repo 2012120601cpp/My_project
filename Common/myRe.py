@@ -35,7 +35,6 @@ def send_mail(username, passwd, recv, title, content, mail_host='smtp.163.com', 
     smtp.sendmail(username, recv, msg.as_string())
     smtp.quit()
 
-
 send_address="caippemail@163.com"
 send_password=input('请输入密码:')
 receive_address="cai.panpan@synyi.com"
