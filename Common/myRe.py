@@ -21,7 +21,6 @@ def send_mail(username, passwd, recv, title, content, mail_host='smtp.163.com', 
         # 构建正文
         part_text = MIMEText(content)
         msg.attach(part_text)  # 把正文加到邮件体里面去
-
         # 构建邮件附件
         part_attach1 = MIMEApplication(open(file, 'rb').read())  # 打开附件
         part_attach1.add_header('Content-Disposition', 'attachment', filename =pathlib.Path(file).name)  # 为附件命名
