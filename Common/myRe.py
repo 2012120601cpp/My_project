@@ -1,18 +1,48 @@
-import re
+from email.mime.application import MIMEApplication
+from email.mime.multipart import MIMEMultipart
+import smtplib
+from email.mime.text import MIMEText
+import pathlib
 
-ret1 = re.match(r"test[0-9a-zA-Z]", "testZ")
-ret2 = re.match(r"test\d", "test1")
-ret3 = re.match(r"test\s", "test    ")
-ret4 = re.match(r"test\w", "test_")
+def send_mail(username, passwd, recv, title, content, mail_host='smtp.163.com', port=25, file=None):
+    '''
+    发送邮件函数，默认使用163smtp
+    :param username: 邮箱账号 xx@163.com
+    :param passwd: 邮箱密码
+    :param recv: 邮箱接收人地址，多个账号以逗号隔开
+    :param title: 邮件标题
+    :param content: 邮件内容
+    :param mail_host: 邮箱服务器
+    :param port: 端口号
+    :return:
+    '''
+    if file:
+        msg = MIMEMultipart()
+        # 构建正文
+        part_text = MIMEText(content)
+        msg.attach(part_text)  # 把正文加到邮件体里面去
 
-ret22 = re.match(r"test\D", "test ")
-ret33 = re.match(r"test\S", "test1")
-ret44 = re.match(r"test\W", "test=")
+        # 构建邮件附件
+        part_attach1 = MIMEApplication(open(file, 'rb').read())  # 打开附件
+        part_attach1.add_header('Content-Disposition', 'attachment', filename =pathlib.Path(file).name)  # 为附件命名
+        msg.attach(part_attach1)  # 添加附件
+    else:
+        msg = MIMEText(content)  # 邮件内容
+    msg['Subject'] = title  # 邮件主题
+    msg['From'] = username  # 发送者账号
+    msg['To'] = recv  # 接收者账号列表
+    smtp = smtplib.SMTP(mail_host, port=port)
+    smtp.login(username, passwd)  # 登录
+    smtp.sendmail(username, recv, msg.as_string())
+    smtp.quit()
 
-print(ret1.group())
-print(ret2.group())
-print(ret3.group())
-print(ret4.group())
-print(ret22.group())
-print(ret33.group())
-print(ret44.group())
+
+send_address="caippemail@163.com"
+send_password=input('请输入密码:')
+receive_address="cai.panpan@synyi.com"
+title="日报test"
+content="test 发件内容"
+attachfilepath="d:\\test.xlsx"
+send_mail(send_address, send_password, receive_address, title,content ,file=attachfilepath)
+print('success')
+
