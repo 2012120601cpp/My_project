@@ -17,11 +17,11 @@ class Mail:
                   '今日变量中心  V1.4.0.0930  整体进度：进行中【计划  9月30日  发版】\n' \
                   '项目计划如下：\n' \
                   '版本号：V1.4.0.0930\n' \
-                  'sit时间为：2021-4-2\n' \
+                  'sit时间为：2021/4/2-2021/4/18\n' \
                   '风险：无\n' \
                   '今日进度：70%\n' \
                       '1、开发已提测7个需求，测试进行中3个需求，详细测试计划详见图表；\n' \
-                      '2、BUG总数13个，今日新增：1个，今日关闭：3个，高优先级级以上：1个。\n' \
+                      '2、BUG总数13个，今日新增：1个，今日关闭：3个，高优先级及以上：1个。\n' \
                   'bug详情：https://redmine.synyi.com/projects/mdm/issues?query_id=2457\n' \
                   '本次需求：https://redmine.synyi.com/projects/mdm/issues?query_id=2398\n'
         message = MIMEText(content, 'plain', 'utf-8')

@@ -6,6 +6,12 @@ dev_complete_requirement = 'select count(*) from     where  ;'
 test_complete_requirement = 'select count(*) from     where  ;'
 # bug总数
 sum_bug = 'select count(*) from      where  ;'
+# 今日新增bug数
+new_bug = 'select count(*) from      where  ;'
+# 今日关闭bug数
+close_bug = 'select count(*) from      where  ;'
+# 待解决bug数
+open_bug = 'select count(*) from      where  ;'
 # 优先级为高及以上bug数
 serious_bug = 'select count(*) from      where  ;'
 # 需求详情地址
