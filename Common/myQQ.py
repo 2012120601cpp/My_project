@@ -27,7 +27,7 @@ class Mail:
         message = MIMEText(content, 'plain', 'utf-8')
 
         message['From'] = Header("日报助手", 'utf-8')
-        message['To'] = Header("变量中心项目相关人员", 'utf-8')
+        message['To'] = Header(','.join(self.receivers), 'utf-8')
 
         subject = '测试日报'  # 发送的主题
         message['Subject'] = Header(subject, 'utf-8')
