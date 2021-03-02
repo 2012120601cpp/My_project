@@ -23,7 +23,11 @@ class Mail:
                       '1、开发已提测7个需求，测试进行中3个需求，详细测试计划详见图表；\n' \
                       '2、BUG总数13个，今日新增：1个，今日关闭：3个，高优先级及以上：1个。\n' \
                   'bug详情：https://redmine.synyi.com/projects/mdm/issues?query_id=2457\n' \
-                  '本次需求：https://redmine.synyi.com/projects/mdm/issues?query_id=2398\n'
+                  '本次需求：https://redmine.synyi.com/projects/mdm/issues?query_id=2398\n' \
+                  '占比图：'\
+
+
+
         message = MIMEText(content, 'plain', 'utf-8')
 
         message['From'] = Header("日报助手", 'utf-8')
