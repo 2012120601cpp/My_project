@@ -5,7 +5,7 @@ def my_pie():
         bug_state = ['新建', '确认', '进行中', '重新打开', '完成', '完成（未发版）', '关闭', '拒绝', '重复', '挂起']
         place_count = [11, 12, 5, 2, 22, 12, 12, 2, 4, 1]
         # 展现bug的占比
-        plt.figure(figsize=(20, 8), dpi=100)
+        plt.figure(figsize=(10,5), dpi=100)
         # 防止中文乱码
         plotter.rcParams['font.sans-serif'] = ['SimHei']
         # 通过pie
@@ -19,4 +19,4 @@ def my_pie():
         plt.title("Bug占比示意图")
         plt.show()
 
-
+my_pie()

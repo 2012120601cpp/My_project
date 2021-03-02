@@ -1,5 +1,7 @@
 import smtplib
 from email.mime.text import MIMEText
+from email.mime.image import MIMEImage
+from email.mime.multipart import MIMEMultipart
 from email.header import Header
 from Common.myPie import my_pie  # bug分布图
 
@@ -26,6 +28,23 @@ class Mail:
                   'bug详情：https://redmine.synyi.com/projects/mdm/issues?query_id=2457\n' \
                   '本次需求：https://redmine.synyi.com/projects/mdm/issues?query_id=2398\n' \
                   '占比图：'\
+
+
+#         content = """
+# <p>Python 邮件发送测试...</p>
+# <p><a href="http://www.runoob.com">这是一个链接</a></p>
+# <p>图片：</p>
+# <p><img src="cid:image1"></p>
+# """
+#         # 指定图片为当前目录
+#         fp = open('test.png', 'rb')
+#         msgImage = MIMEImage(fp.read())
+#         fp.close()
+#
+#         # 定义图片 ID，在 HTML 文本中引用
+#         msgImage.add_header('Content-ID', '<image1>')
+#         msgRoot = MIMEMultipart('related')
+#         msgRoot.attach(msgImage)
 
 
 
