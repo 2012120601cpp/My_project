@@ -1,7 +1,7 @@
 import smtplib
 from email.mime.text import MIMEText
 from email.header import Header
-
+from Common.myPie import my_pie  # bug分布图
 
 class Mail:
     def __init__(self):
@@ -10,6 +10,7 @@ class Mail:
         self.mail_pass = "xuiattgdleykcach"  # 获取的授权码
         self.sender = '379609962@qq.com'  # 发件人的邮箱地址
         self.receivers = ['cai.panpan@synyi.com','1275372931@qq.com']  # 收件人的邮箱地址，可设置多个
+
 
     def send(self):
         # 发送的内容
