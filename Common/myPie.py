@@ -9,7 +9,7 @@ def my_pie():
         # 防止中文乱码
         plotter.rcParams['font.sans-serif'] = ['SimHei']
         # 通过pie
-        plt.pie(place_count, labels=bug_state, autopct='%1.2f%%')
+        plt.pie(place_count, labels=bug_state, autopct='%1.1f%%')
 
         # 指定显示的pie是正圆
         plt.axis('equal')
@@ -19,4 +19,6 @@ def my_pie():
         plt.title("Bug占比示意图")
         plt.show()
 
-my_pie()
+
+if __name__ == '__main__':
+        my_pie()
