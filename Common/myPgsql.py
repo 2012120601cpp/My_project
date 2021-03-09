@@ -1,12 +1,11 @@
 import psycopg2
 import logging
 from Common import myLogger
-
 class MyPgsql(object):
     # 连接数据库
     def __init__(self):
         try:
-            self.conn = psycopg2.connect(host="172.16.129.79",user="postgres",password="postgres",port="5432",database="empi_2")
+            self.conn = psycopg2.connect(host="172.16.0.20",user="caipanpan",password="yi0vLj^UL#Qh",port="5432",database="unifiedstorage_dev")
             logging.info("数据库连接成功！")
         except Exception as e:
             logging.info("数据库连接失败：%s",e)
