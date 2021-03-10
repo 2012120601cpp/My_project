@@ -3,9 +3,6 @@ import matplotlib.pyplot as plt
 
 
 def my_pie():
-        from Common.my_Sql import Allmysql
-        allmysql = Allmysql()
-        allmysql.all_sql()
         # bug的所有状态
         bug_state = ['剩余待解决', '已解决', '重新打开']
 
