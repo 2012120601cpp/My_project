@@ -4,6 +4,7 @@ import smtplib
 from email.mime.text import MIMEText
 import pathlib
 
+
 def send_mail(username, passwd, recv, title, content, mail_host='smtp.163.com', port=25, file=None):
     '''
     发送邮件函数，默认使用163smtp
